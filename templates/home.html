@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TimeGen.AI</title>
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+
+<div class="landing">
+
+  <div class="navbar">
+    <h2>TimeGen<span>.AI</span></h2>
+    <button class="nav_button" onclick="goLogin()">Get Started</button>
+  </div>
+
+  <div class="hero">
+    <h1 >Conflict-Free Timetables,<br>Generated in Seconds.</h1>
+    <p>
+      Stop using spreadsheets. TimeGen.AI automatically generates
+      optimized college timetables with no clashes.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="primary" onclick="goLogin()">Get Started</button>
+      <button class="secondary" onclick="goHelp()">Learn More</button>
+    </div>
+  </div>
+
+<div class="features">
+  <div class="feature">
+    <h3>⚡ Fast Generation</h3>
+    <p>Create complete timetables in seconds without clashes.</p>
+  </div>
+
+  <div class="feature">
+    <h3>🧠 Smart Scheduling</h3>
+    <p>Automatically handles faculty, labs and time slots.</p>
+  </div>
+
+  <div class="feature">
+    <h3>📄 PDF & Web Input</h3>
+    <p>Upload syllabus or fetch data directly from website.</p>
+  </div>
+</div>
+
+
+</div>
+
+<script>
+function goLogin() {
+  window.location.href = "/index";
+}
+function goHelp() {
+  window.location.href = "/help";
+}
+</script>
+
+</body>
+</html>

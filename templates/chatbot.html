@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timetable Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="tt-chat-wrapper">
+  <div class="tt-chat-card">
+    
+    <h2 class="tt-chat-title">Timetable Assistant</h2>
+
+    <div id="chat-box" class="tt-chat-box"></div>
+
+    <div class="tt-chat-input-row">
+      <input
+        type="text"
+        id="user-input"
+        class="tt-chat-input"
+        placeholder="Ask about your timetable..."
+      />
+      <button class="tt-chat-send" onclick="sendMessage()">Send</button>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+async function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (!message) return;
+
+  addMessage("You", message);
+  input.value = "";
+
+  const response = await fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await response.json();
+  addMessage("Bot", data.reply);
+}
+
+function addMessage(sender, text) {
+  const chatBox = document.getElementById("chat-box");
+  const msg = document.createElement("div");
+
+  msg.classList.add("tt-chat-message");
+
+  if (sender === "You") {
+    msg.classList.add("tt-user-msg");
+    msg.innerText = text;
+  } else {
+    msg.classList.add("tt-bot-msg");
+    msg.innerText = text;
+  }
+
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>

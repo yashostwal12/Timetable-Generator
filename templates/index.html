@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | TimeGen.AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>TimeGen<span>.AI</span></h2>
+    <button class="nav_button" onclick="goChatBot()">Chatbot</button>
+  </div>
+<div class="auth-page">
+  
+  <div class="card">
+    <h2>Welcome Back !!</h2>
+    <p>Login to continue</p>
+      
+    <input type="email" id="loginUser" placeholder="Username or Email">
+    <div class="password-wrapper">
+    <input 
+        type="password" 
+        id="loginPass" 
+        placeholder="Enter password"
+    >
+    <button 
+        type="button" 
+        class="password-toggle"
+        onclick="togglePassword(this)"
+    >
+        Show
+    </button>
+</div>
+
+
+    <button onclick="login()">Login</button>
+
+    <p class="switch">
+      Don’t have an account? <a href="/register">Register</a>
+    </p>
+
+    <p id="msg" class="msg"></p>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='auth.js') }}"></script>
+<script>
+
+
+</script>
+
+        
+</body>
+</html>

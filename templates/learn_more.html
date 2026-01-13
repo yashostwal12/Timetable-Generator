@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help – How to Use Timetable Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+
+<div class="auth-page">
+    <div class="card help-card-content">
+
+        <h1>How to Use the Timetable Generator</h1>
+        <p class="help-intro">
+            This page explains how to correctly use each feature of the Timetable Generation System.
+            Please read this before entering data to avoid incorrect or incomplete timetable generation.
+        </p>
+
+        <!-- SECTION 1 -->
+        <div class="help-section">
+            <h2>1. General Timetable Inputs</h2>
+            <p>These inputs define the basic structure of your academic day.</p>
+            <ul>
+                <li><strong>Start Time:</strong> Time at which the first lecture begins (HH:MM format)</li>
+                <li><strong>End Time:</strong> Time at which the academic day ends</li>
+                <li><strong>Working Days:</strong> Number of working days in a week (usually 5 or 6)</li>
+                <li><strong>Periods per Day:</strong> Total number of lecture slots per day</li>
+            </ul>
+            <div class="help-note">
+                Make sure the total duration of lectures and breaks fits between start and end time.
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="help-section">
+            <h2>2. Lecture, Practical, and Break Durations</h2>
+            <p>These values define how time is distributed throughout the day.</p>
+            <ul>
+                <li><strong>Lecture Duration:</strong> Duration of one theory lecture (in minutes)</li>
+                <li><strong>Practical Duration:</strong> Duration of one practical session</li>
+                <li><strong>Practical Batches</strong> Number of Practical Batches per Division</li>
+                <li><strong>Lunch Break:</strong> Duration of lunch break</li>
+                <li><strong>Short Break:</strong> Duration of short breaks between lectures</li>
+                <li><strong>Short Break Count:</strong> Number of short breaks per day</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="help-section">
+            <h2>3. Faculty Data Extraction (College Website Link)</h2>
+            <p>
+                To automatically extract faculty details, the system requires a link to your college’s
+                official faculty information page.
+            </p>
+
+            <h3>What link should be provided?</h3>
+            <ul>
+                <li>The link must be from the <strong>official college website</strong></li>
+                <li>The page should list faculty names and departments</li>
+                <li>Preferred pages include:
+                    <ul>
+                        <li>Department faculty listing page</li>
+                        <li>Staff directory page</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="help-box">
+                Example: <code>https://college.edu/computer-engineering/faculty</code>
+            </div>
+
+            <div class="help-warning">
+                Do not provide login-protected pages, Google Drive links, or scanned images.
+            </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="help-section">
+            <h2>4. Syllabus PDF Upload</h2>
+            <p>The syllabus PDF is used to extract subject names and academic structure.</p>
+
+            <h3>Accepted PDF Type</h3>
+            <ul>
+                <li>Official university or college syllabus PDF</li>
+                <li>Text-based PDF (not scanned images)</li>
+                <li>Should clearly mention subject names, semester, and theory/practical details</li>
+            </ul>
+
+            <div class="help-box">
+                Recommended file name: <code>CE_Sem4_Syllabus.pdf</code>
+            </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="help-section">
+            <h2>5. Subject and Faculty Assignment</h2>
+            <ul>
+                <li>Assign one or more faculty members per subject</li>
+                <li>Specify theory, practical, and tutorial hours</li>
+                <li>The system automatically checks faculty collisions</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="help-section">
+            <h2>6. Generating the Timetable</h2>
+            <ul>
+                <li>Click <strong>Create Timetable</strong> after all inputs are filled</li>
+                <li>Division-wise timetables are generated</li>
+                <li>Faculty conflicts are avoided automatically</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 7 -->
+        <div class="help-section">
+            <h2>7. Chatbot Usage</h2>
+            <ul>
+                <li>“Who teaches Operating Systems on Tuesday?”</li>
+                <li>“Show timetable for Division 1”</li>
+                <li>“When is the next practical session?”</li>
+            </ul>
+
+            <div class="help-note">
+                Chatbot responses are generated using the current timetable data.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+/* =====================================================
+   CSS VARIABLES
+===================================================== */
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-primary: #D8E1E9;
+  --color-secondary: #C9CED6;
+  --color-accent: #6EE7F9;
+
+  --color-text-dark: #111;
+  --color-text-muted: #666;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+
+  --transition-fast: 0.25s ease;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  background-image: url(bg2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   CENTER WRAPPER
+===================================================== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+.card {
+  background: var(--color-secondary);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =====================================================
+   INPUTS & SELECT
+===================================================== */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+button,
+.nav_button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: var(--radius-md);
+  border: 2px solid black;
+  background: var(--color-secondary);
+  color: var(--color-black);
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+button:hover {
+  background: var(--color-black);
+  color: var(--color-secondary);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 60px;
+}
+.navbar h2{
+  color:var(--color-primary)
+}
+.navbar h2 span {
+  color: var(--color-accent);
+}
+
+.navbar button {
+  width: auto;
+  padding: 10px 22px;
+  border-radius: 25px;
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid transparent;
+}
+
+.navbar button:hover {
+  border: 2px solid var(--color-primary);
+  background: rgba(255,255,255,0.08);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+  min-height: calc(90vh - 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: var(--color-primary);
+}
+
+.hero p {
+  font-size: 18px;
+  color: #eaeaea;
+  max-width: 600px;
+}
+
+.hero-buttons {
+  margin-top: 25px;
+}
+
+.hero-buttons button {
+  width: auto;
+  padding: 12px 42px;
+  border-radius: 25px;
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-black);
+}
+
+.secondary {
+  background: transparent;
+  border: 2px solid var(--color-white);
+  color: var(--color-primary);
+}
+
+/* =====================================================
+   FEATURES
+===================================================== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 40px 80px 60px;
+}
+
+.feature {
+  background: var(--color-primary);
+  color: var(--color-text-dark);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              border var(--transition-fast);
+}
+
+.feature:hover {
+  transform: translateY(-10px) scale(1.03);
+  border: 1px solid var(--color-black);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+.dashboard-card {
+  width: 620px;
+  text-align: center;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.option-box {
+  background: #f7f7f7;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+/* =====================================================
+   MANUAL ENTRY
+===================================================== */
+.manual-container {
+  width: 80%;
+  display: flex;
+  gap: 30px;
+}
+
+.manual-right {
+  flex: 1;
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 15px;
+  max-height: 660px;
+  overflow-y: auto;
+}
+.manual-left{
+  flex: 1;
+}
+
+.manual-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.manual-footer {
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+}
+
+.create-btn {
+  width: 100%;
+}
+
+/* =====================================================
+   SUBJECT ROW
+===================================================== */
+.subject-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-white);
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.subject-row button {
+  width: auto;
+  padding: 8px 14px;
+  font-size: 13px;
+
+}
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+
+
+.loader {
+   display: inline-block;   
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--color-secondary);
+  border-top: 3px solid black;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+/* Full-screen wrapper */
+.tt-chat-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center card */
+.tt-chat-card {
+  width: 90%;
+  max-width: 520px;
+  height: 85vh;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+/* Title */
+.tt-chat-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Chat scroll area */
+.tt-chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Shared message style */
+.tt-chat-message {
+  max-width: 75%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* User bubble */
+.tt-user-msg {
+  align-self: flex-end;
+  background: #e1f0ff;
+  border: 1px solid #b5d9ff;
+}
+
+/* Bot bubble */
+.tt-bot-msg {
+  align-self: flex-start;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+}
+
+/* Input row */
+.tt-chat-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Input */
+.tt-chat-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 500px;
+}
+
+/* Button */
+.tt-chat-send {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+}
+/* =====================================================
+   HELP / DOCUMENTATION PAGE
+===================================================== */
+
+.help-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+.auth-page{
+  font-family: 'Poppins';
+}
+
+.help-card {
+  width: 90%;
+  max-width: 1100px;
+  background: var(--color-secondary);
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.help-card h1 {
+  text-align: center;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+}
+
+.help-card h2 {
+  margin-top: 40px;
+  color: var(--color-text-dark);
+}
+
+.help-card h3 {
+  margin-top: 22px;
+  color: var(--color-text-dark);
+}
+
+.help-card p {
+  margin: 10px 0 18px;
+  font-size: 14px;
+}
+
+.help-card ul {
+  padding-left: 20px;
+  margin-bottom: 18px;
+}
+
+.help-card li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Info box */
+.help-note {
+  background: var(--color-primary);
+  border-left: 5px solid var(--color-accent);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  margin: 18px 0;
+  font-size: 13px;
+}
+
+/* Warning box */
+.help-warning {
+  background: #ffeaea;
+  border-left: 5px solid #ff4d4d;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  margin: 18px 0;
+  font-size: 13px;
+}
+
+/* Inline code / links */
+.help-card code {
+  background: #f0f0f0;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Example blocks */
+.help-example {
+  background: var(--color-white);
+  padding: 14px;
+  border-radius: var(--radius-md);
+  margin-top: 10px;
+  font-size: 13px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Section separation */
+.help-section {
+  margin-bottom: 35px;
+}
+
+/* =====================================================
+   PASSWORD TOGGLE FIX
+===================================================== */
+
+
+/* Wrapper must control spacing */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 10px; /* replaces global input margin */
+}
+
+/* Neutralize global input styles ONLY here */
+.password-wrapper input {
+  margin: 0 !important;
+  padding-right: 70px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Completely opt-out of global button styling */
+.password-wrapper .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+
+  all: unset;               /* 🔥 kills inherited button styles */
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+.password-wrapper .password-toggle:hover {
+  color: var(--color-black);
+}
+
+.hidden { display: none; }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manual Entry | TimeGen.AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+<div class="navbar">
+    <h2>TimeGen<span>.AI</span></h2>
+    <button class="nav_button" onclick="goChatBot()">Chatbot</button>
+  </div>
+<div class="auth-page">
+  <div class="card manual-container">
+
+    <div class="manual-left">
+
+      <h2>Subjects And Faculty info 
+
+      </h2>
+
+      <button class="danger-btn" type="button" onclick="clearAllData()">
+        🧹 Start Fresh Setup
+      </button>
+
+      <h3>Add Faculty <span id="facultyCount">0</span></h3>
+
+      <input type="text" id="URLInput" placeholder="Faculty Page URL">
+      <button
+          type="button"
+          class="secondary-btn"
+          id="facultyImportBtn"
+          onclick="addFacultyFromURL()">
+          <span class="btn-text">🌐 Import Faculty</span>
+          <span class="loader hidden"></span>
+      </button>
+
+
+      <input type="text" id="facultyInput" placeholder="Faculty Name">
+      <button type="button" onclick="addFaculty()">➕ Add Faculty Manually</button>
+
+      <hr>
+
+      <h3>Add Subject <span id="subjectCount">0</span></h3>
+
+      <input type="file" id="PDFInput" accept=".pdf">
+      <button
+          type="button"
+          class="secondary-btn"
+          id="subjectImportBtn"
+          onclick="addSubjectsFromPDF()">
+          <span class="btn-text">📄 Import Subjects</span>
+          <span class="loader hidden"></span>
+      </button>
+
+
+      <input type="text" id="subjectInput" placeholder="Subject Name">
+      <button type="button" onclick="addSubject()">➕ Add Subject Manually</button>
+
+      <p id="msg"></p>
+
+      <button type="button" onclick="goBack()">⬅ Back</button>
+    </div>
+
+    <div class="manual-right">
+  <div class="manual-content">
+    <h3>Subjects & Assigned Faculty</h3>
+    <div id="subjectList"></div>
+  </div>
+
+  <div class="manual-footer">
+    <button class="create-btn" onclick="sendDataToBackend()">Create table</button>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<script>
+  window.initialSubjects = [];
+  window.initialFaculty = [];
+</script>
+
+<script src="{{ url_for('static', filename='manual.js') }}"></script>
+
+</body>
+</html>

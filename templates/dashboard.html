@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard | TimeGen.AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body onload="checkAuth()">
+<div class="navbar">
+    <h2>TimeGen<span>.AI</span></h2>
+    <button class="nav_button" onclick="goChatBot()">Chatbot</button>
+  </div>
+<div class="auth-page">
+  <div class="card dashboard-card">
+
+    <h2>Timetable Dashboard 🗓</h2>
+    <p>Select how you want to enter timetable data</p>
+
+    <form class="timetable-form">
+
+      <!-- Day timing -->
+      <div class="time-row">
+        <label for="">Starting Time</label>
+        <input type="time" id="startTime" required>
+        <label for="">Ending Time</label>
+        <input type="time" id="endTime" required>
+      </div>
+
+      <!-- Working days -->
+      <input
+        type="number"
+        id="workingDays"
+        placeholder="Working days per week (e.g. 5)"
+        min="1"
+        max="7"
+        required
+      >
+
+      <input
+        type="number"
+        id="noOfDiv"
+        placeholder="Number Of Divisions"
+        min="1"
+        required
+      >
+
+
+      <!-- Durations -->
+      <div class="duration-row">
+        <input
+          type="number"
+          id="lectureDuration"
+          placeholder="Lecture duration (min)"
+          min="10"
+          required
+        >
+
+        <input
+          type="number"
+          id="practicalDuration"
+          placeholder="Practical duration (min)"
+          min="30"
+          required
+        >
+        <input
+          type="number"
+          id="practicalBatches"
+          placeholder="Practical Batches"
+          min="1"
+          required
+        >
+        <input
+          type="number"
+          id="practicalLabs"
+          placeholder="Practical Labs Available"
+          min="2"
+          required
+        >
+      </div>
+
+      <!-- Breaks -->
+      <div class="duration-row">
+        <input
+          type="number"
+          id="lunchBreak"
+          placeholder="Lunch break (min)"
+          min="0"
+          required
+        >
+
+        <input
+          type="number"
+          id="shortBreak"
+          placeholder="Short break (min)"
+          min="0"
+          required
+        >
+      </div>
+
+      <input
+        type="number"
+        id="shortBreakCount"
+        placeholder="Number of short breaks"
+        min="0"
+        required
+      >
+
+      <!-- Result -->
+      <div class="result-box">
+        <span>Total periods per day</span>
+        <strong id="periodCount">—</strong>
+      </div>
+
+      <!-- Hidden calculated value -->
+      <input type="hidden" id="periodsInput">
+
+      <button type="button" class="primary-btn" onclick="saveConfig(event)">
+        Next →
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='auth.js') }}"></script>
+
+<script>
+function toMinutes(time) {
+  const [h, m] = time.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function calculatePeriods() {
+  const start = startTime.value;
+  const end = endTime.value;
+  const lecture = +lectureDuration.value;
+  const lunch = +lunchBreak.value;
+  const shortB = +shortBreak.value;
+  const shortCount = +shortBreakCount.value;
+
+  if (!start || !end || !lecture) return;
+
+  const totalDayMinutes = toMinutes(end) - toMinutes(start);
+
+  if (totalDayMinutes <= 0) {
+    periodCount.innerText = "Invalid time";
+    return;
+  }
+
+  const breakTime = lunch + (shortB * shortCount);
+  const usableMinutes = totalDayMinutes - breakTime;
+
+  if (usableMinutes <= 0) {
+    periodCount.innerText = "All breaks, no class";
+    return;
+  }
+
+  const periods = Math.floor(usableMinutes / lecture);
+  periodCount.innerText = periods;
+  periodsInput.value = periods;
+}
+
+document.querySelectorAll(
+  "#startTime, #endTime, #lectureDuration, #lunchBreak, #shortBreak, #shortBreakCount"
+).forEach(el => el.addEventListener("input", calculatePeriods));
+</script>
+
+<script>
+function saveConfig(event) {
+  if (event) event.preventDefault();
+
+  const periods = Number(periodsInput.value);
+  if (!periods) {
+    alert("Fix inputs before proceeding");
+    return;
+  }
+
+  const config = {
+    startTime: startTime.value,
+    endTime: endTime.value,
+    noOfDiv: Number(noOfDiv.value),
+    workingDays: Number(workingDays.value),
+    lectureDuration: Number(lectureDuration.value),
+    practicalDuration: Number(practicalDuration.value),
+    practicalBatches:Number(practicalBatches),
+    labCount:Number(practicalLabs.value),
+    lunchBreak: Number(lunchBreak.value),
+    shortBreak: Number(shortBreak.value),
+    shortBreakCount: Number(shortBreakCount.value),
+    periodsPerDay: periods
+  };
+
+  localStorage.setItem("timetableConfig", JSON.stringify(config));
+  window.location.href = "/entry";
+}
+</script>
+
+</body>
+</html>

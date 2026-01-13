@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timetable</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin: 30px 0 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: white;
+      margin-bottom: 50px;
+    }
+
+    th, td {
+      border: 1px solid #444;
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 13px;
+      word-wrap: break-word;
+    }
+
+    th {
+      background: #eaeaea;
+      font-weight: 600;
+    }
+
+    td.period {
+      font-weight: 600;
+      background: #f5f5f5;
+      width: 70px;
+    }
+
+    .cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .subject {
+      font-weight: 600;
+      font-size: 13px;
+      color: black;
+    }
+
+    .faculty {
+      font-size: 12px;
+      color: #333;
+    }
+
+    .break-row td {
+      background: #fff3cd;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .lunch-row td {
+      background: #fde2e2;
+      font-weight: 700;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Generated Timetables</h1>
+
+{% set days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] %}
+
+{% for table in tables %}
+  <h2>Division {{ loop.index }}</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Period</th>
+        {% for d in days[:meta.working_days] %}
+          <th>{{ d }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for row in table[1:] %}
+        {% set period = row[0] %}
+
+        <!-- Period Row -->
+        <tr>
+          <td class="period">{{ period }}</td>
+
+          {% for i in range(1, meta.working_days + 1) %}
+            {% set cell = row[i] if i < row|length else [] %}
+            <td>
+              {% if cell and cell|length > 0 %}
+                {% set entry = cell[0] %}
+                <div class="cell">
+                  <div class="subject">{{ entry["subject"] }}</div>
+                  <div class="faculty">{{ entry["faculty"] }}</div>
+                </div>
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+
+        <!-- Short Break after P2 -->
+        {% if period == "P2" %}
+          <tr class="break-row">
+            <td colspan="{{ meta.working_days + 1 }}">
+              Short Break
+            </td>
+          </tr>
+        {% endif %}
+
+        <!-- Lunch Break after P4 -->
+        {% if period == "P4" %}
+          <tr class="lunch-row">
+            <td colspan="{{ meta.working_days + 1 }}">
+              Lunch Break
+            </td>
+          </tr>
+        {% endif %}
+
+      {% endfor %}
+    </tbody>
+  </table>
+{% endfor %}
+
+</body>
+</html>
