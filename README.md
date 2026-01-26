@@ -52,15 +52,10 @@ Web UI → Flask Backend → Timetable Algorithm → AI Chatbot → Firebase Dat
 
 ---
 
-## 🌍 Live Demo
-🔗 https://timetable-generator-a2f4.onrender.com/
-
----
-
 ## 👥 Team
+- Ayush Pingat
 - Yash Ostwal
 - Harsh Bhalerao
-- Ayush Pingat
 
 ---
 
