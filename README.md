@@ -54,8 +54,8 @@ Web UI → Flask Backend → Timetable Algorithm → AI Chatbot → Firebase Dat
 
 ## 👥 Team
 - Ayush Pingat
-- Yash Ostwal
 - Harsh Bhalerao
+- Yash Ostwal 
 
 ---
 
